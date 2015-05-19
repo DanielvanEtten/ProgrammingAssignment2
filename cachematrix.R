@@ -1,9 +1,22 @@
 
+#This programme contains two functions: makeCacheMatrix and cacheSolve
 
-## makeCacheMatrix to create a list containing:
-## # set the value of the inverse
-# 
 
+#how to use the two functions:
+#1: first create a matrix:
+# m <- matrix(rnorm(100,10), nrow=10, ncol=10)
+#2: feed matrix to makeCacheMatrix function:
+# cm <- makeCacheMatrix(m)
+# 3 call cacheSolve
+# cacheSolve(cm)
+
+
+
+## makeCacheMatrix creates a list containing a function to:
+# (1) set the value of the matrix
+# (2) get the value of the matrix
+# (3) set the value of the inverse
+# (4) get the value of the inverse
 makeCacheMatrix <- function(x = matrix()) {
   
   i <- NULL
@@ -16,14 +29,13 @@ makeCacheMatrix <- function(x = matrix()) {
   getinverse <- function() i
   list(set = set, get = get,
        setinverse = setinverse,
-       getinverse = getinverse)
+       getinverse = getinverse)  
   
-  
-}
+ }
 
 
 
-## The function cacheSolve takes a matrix and checks if the inverse of this matrix is stored in cache.
+## CacheSolve takes a matrix and checks if the inverse of this matrix is stored in cache.
 ## if so it returns the solved Matrix from cache. If not it computes the matrix and then stores it in cache.
 
 cacheSolve <- function(x, ...) {
@@ -37,6 +49,6 @@ cacheSolve <- function(x, ...) {
   i <- solve(data, ...)
   x$setinverse(i)
   i
-}
+ }
 
 
